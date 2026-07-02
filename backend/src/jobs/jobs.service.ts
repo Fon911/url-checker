@@ -84,14 +84,9 @@ export class JobsService {
         await this.check(job.urls[cursor++]);
       }
     };
-    try {
-      await Promise.all(
-        Array.from({ length: Math.min(CONCURRENCY, job.urls.length) }, worker),
-      );
-    } catch {
-      job.status = 'failed';
-      return;
-    }
+    await Promise.all(
+      Array.from({ length: Math.min(CONCURRENCY, job.urls.length) }, worker),
+    );
     if (job.status === 'in_progress') {
       job.status = job.urls.some((item) => item.status === 'success')
         ? 'completed'
