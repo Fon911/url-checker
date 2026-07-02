@@ -1,0 +1,47 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.title {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.hint {
+  margin: 2px 0 12px;
+  font-size: 12px;
+  color: var(--text-faint);
+}
+
+.textarea {
+  margin-bottom: 12px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.7;
+  resize: vertical;
+  transition: border-color 0.15s ease;
+}
+
+.textarea::placeholder {
+  color: var(--text-faint);
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: var(--black);
+}
+
+.error {
+  margin: 10px 0 0;
+  font-size: 13px;
+  color: var(--red);
+  overflow-wrap: anywhere;
+}

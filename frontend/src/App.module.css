@@ -1,0 +1,47 @@
+.header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.headerInner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 1080px;
+  height: 56px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.mark {
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  background: var(--black);
+}
+
+.name {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  align-items: start;
+  gap: 24px;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.side {
+  display: grid;
+  gap: 24px;
+}
+
+@media (max-width: 900px) {
+  .main {
+    grid-template-columns: 1fr;
+  }
+}
