@@ -46,6 +46,10 @@ describe('Jobs API (e2e)', () => {
       .post('/api/jobs')
       .send({ urls: ['ftp://files.dev'] })
       .expect(400);
+    await request(app.getHttpServer())
+      .post('/api/jobs')
+      .send({ urls: Array<string>(1001).fill('https://a.dev') })
+      .expect(400);
   });
 
   it('возвращает 404 для неизвестного задания', async () => {
