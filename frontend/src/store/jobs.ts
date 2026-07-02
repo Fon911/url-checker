@@ -107,7 +107,13 @@ export const useJobsStore = create<JobsState>()((set, get) => {
       try {
         const detail = await cancelJob(id);
         if (get().activeJobId === id) {
-          set({ detail });
+          window.clearTimeout(pollTimer);
+          pollGeneration += 1;
+          set({ detail, detailError: null });
+          if (!isSettled(detail)) {
+            const generation = pollGeneration;
+            pollTimer = window.setTimeout(() => void poll(id, generation), POLL_INTERVAL);
+          }
         }
         void get().loadJobs();
       } catch (err) {
